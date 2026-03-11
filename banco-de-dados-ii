@@ -1,0 +1,42 @@
+ATIVIDADE 1
+ 
+ 1) Faça a correção do campo de desconto na tabela venda, onde o mesmo deverá ser no
+valor de 10% do valor bruto das vendas com parcelas igual a 0.
+UPDATE venda
+SET desconto = valorbruto * 0.10
+WHERE parcelas = 0;
+2) Faça a correção do campo acréscimo na tabela venda, onde o mesmo deverá ser no valor
+de 5% do valor bruto das vendas com parcelas superiores a 0.
+UPDATE venda
+SET acrescimo = valorbruto * 0.05
+WHERE parcelas > 0;
+3) Faça a correção do campo valor líquido na tabela venda considerando os ajustes feitos
+nos campos desconto e acréscimo
+UPDATE venda
+SET valorliquido = valorbruto
+- COALESCE(desconto, 0)
++ COALESCE(acrescimo, 0);
+4) Aplique um ajuste de 5% nos valores de custo de todos os produtos cadastrados
+UPDATE produto
+SET custo = custo * 1.05;
+5) Aplique um ajuste de 10% nos valores de venda de todos os produtos cadastrados cujo
+valor de custo é superior a R$5.00, para os demais produtos aplique um ajuste de 15%.
+UPDATE produto
+SET vrvenda =
+CASE
+WHEN custo > 5 THEN vrvenda * 1.10
+ELSE vrvenda * 1.15
+END;
+6) Remova todos os registros das vendas 101, 205, 315, e 475.
+DELETE FROM venda
+WHERE idvenda IN (101, 205, 315, 475);
+7) Remova todos os registro de vendas do cliente chamado OTAVIO MORAES, e remova
+também o seu cadastro.
+DELETE FROM venda
+WHERE idcliente = (
+SELECT idcliente
+FROM cliente
+WHERE nomecliente = 'OTAVIO MORAES'
+);
+DELETE FROM cliente
+WHERE nomecliente = 'OTAVIO MORAES';

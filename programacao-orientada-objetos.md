@@ -123,7 +123,254 @@ public class Num {
 	   p2.adicionaInfo("João",45,"lenhador");
 	   
 	   tmp.mostreInfo();
+
+
 	   p2.mostreInfo();
 	}
 
-}	
+}
+
+
+(Aula dia 13/03 - códigos )
+
+=========================================================================================
+import java.util.Scanner
+
+
+public class Num{
+	public static void main(String args[]){
+		
+		int idades[] = {11,22,33,44,55};
+		int maior = idades[0];
+		for(int i = 0; i < idades.length; i++){
+			
+		}
+		for (int i = 0; i<idades.length; i++){
+		    System.out.println("Idades --->"+ idades[i]);
+	        if (idades[i] > maior){
+				maior = idades[i];
+			System.out.println("Maior" + maior);
+		    }
+		}
+	}
+}
+
+================================================================================================
+
+import java.util.Scanner;
+public class Num{
+	
+	public static int []lerVetor(int idades[]){
+		Scanner sc = new Scanner(System.in);
+		
+		for(int i = 0; i < idades.length; i++){
+			System.out.print("Digite sua idade: ");
+            idades[i] = sc.nextInt();
+		}
+		for (int i = 0; i<idades.length; i++){
+		    System.out.println("Idades --->"+ idades[i]);
+	    }
+		
+	sc.close();   
+	return idades;	
+	}
+
+	
+	public static int maiorNum(int idades[]){
+	int maior = idades[0];	
+	for (int i = 0; i<idades.length; i++){
+	        if (idades[i] > maior){
+				maior = idades[i];
+			}	
+		}	
+	return maior;	
+	}
+	
+	
+	public static void main(String args[]){
+	   int idades[] = {0,0,0,0};
+	   lerVetor(idades);
+	
+	int maior = maiorNum(idades);
+        System.out.println("Maior idade: " + maior);
+	
+	}
+	
+}
+
+==============================================================================================================
+import java.util.Scanner;
+
+class Auxiliar{
+	
+	public static int []lerVetor(int idades[]){
+		Scanner sc = new Scanner(System.in);
+		
+		for(int i = 0; i < idades.length; i++){
+			System.out.print("Digite sua idade: ");
+            idades[i] = sc.nextInt();
+		}
+		for (int i = 0; i<idades.length; i++){
+		    System.out.println("Idades --->"+ idades[i]);
+	    }
+		
+	sc.close();   
+	return idades;	
+	}
+	
+	public static int maiorNum(int idades[]){
+	int maior = idades[0];	
+	for (int i = 0; i<idades.length; i++){
+	        if (idades[i] > maior){
+				maior = idades[i];
+			}	
+		}	
+	return maior;	
+	}
+
+}
+
+
+public class Num{
+	
+	public static void main(String args[]){
+	   int idades[] = {0,0,0,0};
+	   Auxiliar.lerVetor(idades);
+	
+	int maior = Auxiliar.maiorNum(idades);
+        System.out.println("Maior idade: " + maior);
+	
+	}
+	
+}
+
+==================================================================================================================================
+import java.util.Scanner;
+
+class Auxiliar{
+	
+	public static int maiorVetor(int num[], String nome[]){
+		Scanner sc = new Scanner(System.in);
+		
+		int maior = num[0];
+		String nomeM = nome[0];
+		
+		for(int i = 0; i < num.length &&  i < nome.length; i++){
+			
+			System.out.print("Diga um nome: ");
+            nome[i] = sc.next();
+			
+			System.out.print("Digite a idade: ");
+            num[i] = sc.nextInt();
+		}
+		for (int i = 0; i<num.length; i++){
+		    if (maior< num[i]){
+				maior = num[i];
+				nomeM = nome[i];
+			}
+		
+	    }
+	System.out.println("A pessoa mais velha é " + nomeM + " com " + maior+ " anos!!");
+	sc.close();   	
+	}
+	
+}
+
+public class Num{
+	
+	public static void main(String args[]){
+	   int num[] = {0,0,0,0,0};
+	   String nomes[] = {"","","","",""};
+	   
+	Auxiliar.maiorVetor(num,nomes);
+	}
+	
+=====================================================================================================================
+import java.util.Scanner;
+class Auxiliar {
+    public static void Pedir_Idades(int[] idades) {
+        Scanner src = new Scanner(System.in);
+        for (int i = 0; i < idades.length; i++) {
+            System.out.println("Digite uma idade: ");
+            idades[i] = src.nextInt();
+        }
+    }
+
+    public static void Pedir_Nomes(String[] nomes) {
+        Scanner src = new Scanner(System.in);
+        for (int i = 0; i < nomes.length; i++) {
+            System.out.println("Digite um nome: ");
+            nomes[i] = src.nextLine();
+        }
+    }
+
+    public static void Maior_Idades(int[] idades, String[] nomes){
+        int maior = idades[0];
+        String maiorNome = nomes[0];
+        for (int idx = 1; idx < idades.length; idx++) {
+            if (idades[idx] > maior) {
+                maiorNome = nomes[idx];
+                maior = idades[idx];
+            }
+        }
+        System.out.println("A pessoa mais velha é " + maiorNome + " com " + maior + " anos.");
+    }
+}
+
+
+public class Vetor3 {
+    public static void main(String[] args) {
+        int vetor[] = new int[5];
+        String vetor2[] = new String[5];
+        Auxiliar.Pedir_Idades(vetor);
+        Auxiliar.Pedir_Nomes(vetor2);
+        Auxiliar.Maior_Idades(vetor, vetor2);
+        
+    }
+}
+
+}
+=====================================================================================
+import java.util.Scanner;
+
+class Auxiliar{
+	
+	public static int maiorVetor(int num[], String nome[]){
+		Scanner sc = new Scanner(System.in);
+		
+		int maior = num[0];
+		String nomeM = nome[0];
+		
+		for(int i = 0; i < num.length &&  i < nome.length; i++){
+			
+			System.out.print("Diga um nome: ");
+            nome[i] = sc.next();
+			
+			System.out.print("Digite a idade: ");
+            num[i] = sc.nextInt();
+		}
+		for (int i = 0; i<num.length; i++){
+		    if (maior< num[i]){
+				maior = num[i];
+				nomeM = nome[i];
+			}
+		
+	    }
+	System.out.println("A pessoa mais velha é " + nomeM + " com " + maior+ " anos!!");
+	sc.close();   	
+	}
+	
+}
+
+public class Num{
+	
+	public static void main(String args[]){
+	   int num[] = {0,0,0,0,0};
+	   String nomes[] = {"","","","",""};
+	
+    	
+	Auxiliar.maiorVetor(num,nomes);
+	}
+	
+}
+
